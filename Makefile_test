@@ -1,0 +1,31 @@
+include vars_makefile
+
+NAME			:=	utest
+SRC				:=	main_test.c\
+						test_simple.c\
+						test_move.c\
+						test_put_buf.c\
+						test_chk.c\
+						gap_chk.c\
+						gap_move.c\
+						gap_buf_op.c\
+						gap_put_buf.c\
+						gap_buffer.c\
+						gap_interface.c
+
+TEST_OBJ		:=	$(SRC:.c=.o)
+DIR_BIN			:=	bin/
+TEST_PATH_OBJ	:=	$(addprefix $(DIR_BIN), $(TEST_OBJ))
+
+vpath %.o $(DIR_BIN)
+
+all: $(NAME)
+
+$(NAME): $(OBJ) $(TEST_OBJ)
+	gcc $(TEST_PATH_OBJ) -o $@
+
+$(TEST_OBJ): %.o:%.c test.h
+	gcc -c $(CFLAGS) $< -o $(DIR_BIN)/$@
+
+.PHONY: test
+.SILENT: all $(NAME) $(TEST_OBJ)

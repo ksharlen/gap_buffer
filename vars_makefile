@@ -1,0 +1,13 @@
+SRC			:=	main.c\
+					gap_buf_op.c\
+					gap_move.c\
+					gap_put_buf.c\
+					gap_chk.c\
+					gap_interface.c\
+					gap_buffer.c
+
+OBJ			:=	$(SRC:.c=.o)
+HEADERS		:=	gap_buf.h
+CFLAGS		:=	-Wall -Wextra -Werror -g
+DIR_BIN		:=	bin/
+PATH_OBJ	:=	$(addprefix $(DIR_BIN), $(OBJ))
