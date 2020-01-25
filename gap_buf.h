@@ -42,15 +42,6 @@ typedef struct gapbufer
 	int		gap_end;
 }				gapbuf;
 
-void			die_gap(const char *s);
-void			gap_move(gapbuf *buf, size_t before_sym);//!TMP
-void			gap_clean(gapbuf *buf);
-int				find_sym_pos(gapbuf *buf, size_t pos_sym);
-void			new_gap(gapbuf *buf, size_t len_new_gap);
-void			gap_move_to_slide(gapbuf *buf);
-void			gap_put_end_str(gapbuf *buf, char sym);
-void			gap_put_sym_in_str(gapbuf *buf, char sym);
-
 /*
 **INTERFACE
 */
@@ -59,26 +50,31 @@ void			gap_put_char_in_buf(gapbuf *buf, char sym);
 char			*gap_get_buf(gapbuf *buf);
 
 /*
-**PUT_BUF
+**PUT_BUF_INTERNAL
 */
-void			gap_put_to_buf(gapbuf *buf, size_t pos, char sym);
-void			gap_put_sym_slide(gapbuf *buf, char sym);
 void			put_sym_in_gap_buf(gapbuf *buf, char sym);
-void			put_str_in_gap_buf(gapbuf *buf, char *str); //!TMP
-
-/*
-**SLIDE
-*/
-void			move_slide(gapbuf *buf, size_t pos);
-void			gap_move_slide(gapbuf *buf, int dir);
+void			gap_put_end_str(gapbuf *buf, char sym);
+void			gap_put_sym_in_str(gapbuf *buf, char sym);
 
 /*
 **CHK_BUF
 */
-bool			no_size_gap_buf(gapbuf *buf);
-bool			no_gap_before_slide(gapbuf *buf);
+bool			no_size_gap_buf(gapbuf *buf);		//?
+bool			no_gap_before_slide(gapbuf *buf);	//?
 
-//TMP
+/*
+**INTERNAL
+*/
+void			die_gap(const char *s);
+void			gap_move(gapbuf *buf, size_t before_sym);
+void			gap_clean(gapbuf *buf);//!TMP
+int				find_sym_pos(gapbuf *buf, size_t pos_sym);
+void			new_gap(gapbuf *buf, size_t len_new_gap);
+void			gap_move_to_slide(gapbuf *buf);
+
+
+
+//*TMP
 void			gap_write(gapbuf *buf, void *data, size_t len);
 void			print_buf_int(char *buf, size_t size_buf);
 void			print_stat_gapbuf(gapbuf *buf);
