@@ -20,17 +20,34 @@ int			main(void)
 	gap_put_char_in_buf(&buf, 'l');
 	gap_put_char_in_buf(&buf, 'd');
 
-	buf.user_slide = 3;
+	buf.slide = 3;
 	gap_put_char_in_buf(&buf, ' ');
 	gap_put_char_in_buf(&buf, 'h');
 	gap_put_char_in_buf(&buf, 'o');
 	gap_put_char_in_buf(&buf, 'w');
 	gap_put_char_in_buf(&buf, ' ');
 
+	buf.slide = 0;
+	gap_put_char_in_buf(&buf, 'a');
+	gap_put_char_in_buf(&buf, 'r');
+	gap_put_char_in_buf(&buf, 'e');
+	gap_put_char_in_buf(&buf, ' ');
+
+	gap_put_char_in_buf(&buf, 'h');
+	gap_put_char_in_buf(&buf, 'a');
+	gap_put_char_in_buf(&buf, 't');
+	gap_put_char_in_buf(&buf, 'e');
+
 	char	*str;
 
 	str = gap_get_buf(&buf);
-	printf("str: %s\n", str);
+
+	if (!strcmp(str, "are hatehel how lo world"))
+		printf("OKK!!!!\n");
+	else
+		printf("KO!!!!\n");
+
+	printf("str:%s\n", str);
 
 	print_buf_char(buf.buf, buf.size_buf);
 	print_stat_gapbuf(&buf);

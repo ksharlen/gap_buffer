@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 22:26:04 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/25 20:23:42 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/25 22:28:16 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,11 @@ char	*gap_get_buf(gapbuf *buf)
 //!remake for strnew()
 	str = (char *)malloc(sizeof(char) * (buf->len_string + 1));
 	bzero(str, buf->len_string + 1);
-	while (i < buf->len_string)
+	while (j < (size_t)LEN_STR)
 	{
-		if (BUF[i])
+		if (i == (size_t)GAP_START)
+			i = GAP_END;
+		else if (BUF[i])
 			str[j++] = BUF[i];
 		++i;
 	}

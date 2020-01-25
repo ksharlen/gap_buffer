@@ -31,6 +31,7 @@ enum			e_gap_dir
 	GAP_RIGHT
 };
 
+//!Поменять на size_t
 typedef struct gapbufer
 {
 	char	*buf;

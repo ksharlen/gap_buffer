@@ -57,7 +57,7 @@ void	new_gap(gapbuf *buf, size_t len_new_gap)
 {
 	if (len_new_gap)
 	{
-		if (len_new_gap <= (SIZE_BUF - LEN_STR))
+		if (len_new_gap >= (SIZE_BUF - LEN_STR))
 			len_new_gap = (SIZE_BUF - LEN_STR);
 		GAP_START = LEN_STR;
 		GAP_END = GAP_START + len_new_gap;
