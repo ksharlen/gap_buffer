@@ -51,6 +51,11 @@ typedef struct gapbufer
 void			gap_buf_init(gapbuf *buf, size_t size_buf, size_t size_gap);//!add in file interface
 void			gap_put_char_in_buf(gapbuf *buf, char sym);
 char			*gap_get_buf(gapbuf *buf);
+//?DEV
+void			gap_slide_left(gapbuf *buf);
+void			gap_slide_right(gapbuf *buf);
+void			gap_del_before_slide(gapbuf *buf);	//!NOT_DONE
+void			gap_del_on_slide(gapbuf *buf);		//!NOT_DONE
 
 /*
 **PUT_BUF_INTERNAL
@@ -58,6 +63,7 @@ char			*gap_get_buf(gapbuf *buf);
 void			put_sym_in_gap_buf(gapbuf *buf, char sym);
 void			gap_put_end_str(gapbuf *buf, char sym);
 void			gap_put_sym_in_str(gapbuf *buf, char sym);
+void			del_sym(gapbuf *buf, size_t del_pos);
 
 /*
 **CHK_BUF

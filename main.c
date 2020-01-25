@@ -11,7 +11,7 @@ int			main(void)
 	gap_put_char_in_buf(&buf, 'h');
 	gap_put_char_in_buf(&buf, 'e');
 	gap_put_char_in_buf(&buf, 'l');
-	gap_put_char_in_buf(&buf, 'l');
+	gap_put_char_in_buf(&buf, 'l'); //DELETING
 	gap_put_char_in_buf(&buf, 'o');
 	gap_put_char_in_buf(&buf, ' ');
 	gap_put_char_in_buf(&buf, 'w');
@@ -20,23 +20,7 @@ int			main(void)
 	gap_put_char_in_buf(&buf, 'l');
 	gap_put_char_in_buf(&buf, 'd');
 
-	buf.slide = 3;
-	gap_put_char_in_buf(&buf, ' ');
-	gap_put_char_in_buf(&buf, 'h');
-	gap_put_char_in_buf(&buf, 'o');
-	gap_put_char_in_buf(&buf, 'w');
-	gap_put_char_in_buf(&buf, ' ');
-
-	buf.slide = 0;
-	gap_put_char_in_buf(&buf, 'a');
-	gap_put_char_in_buf(&buf, 'r');
-	gap_put_char_in_buf(&buf, 'e');
-	gap_put_char_in_buf(&buf, ' ');
-
-	gap_put_char_in_buf(&buf, 'h');
-	gap_put_char_in_buf(&buf, 'a');
-	gap_put_char_in_buf(&buf, 't');
-	gap_put_char_in_buf(&buf, 'e');
+	del_sym(&buf, 3);
 
 	char	*str;
 

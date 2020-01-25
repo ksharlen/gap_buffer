@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 22:26:04 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/25 22:28:16 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/25 22:47:02 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,13 @@ char	*gap_get_buf(gapbuf *buf)
 
 void	del_sym(gapbuf *buf, size_t del)
 {
-	P_UNUSED(buf);
-	P_UNUSED(del);
+	// size_t	ind;
+//!нужна проверка на переполнение
+	BUF_SLIDE = del;
+	gap_move_to_slide(buf);
+	BUF[GAP_END +++ 1] = '\0';
+	LEN_STR--;
+	SIZE_GAP_BUF++;
 }
 
 //!ПОДУМАТЬ
