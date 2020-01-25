@@ -6,13 +6,12 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 22:26:04 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/25 19:13:52 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/25 20:17:56 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gap_buf.h"
 
-//?Вставляет перед slide
 void	gap_put_sym_in_str(gapbuf *buf, char sym)
 {
 	put_sym_in_gap_buf(buf, sym);
@@ -66,6 +65,7 @@ void	del_sym(gapbuf *buf, size_t del)
 	P_UNUSED(del);
 }
 
+//!ПОДУМАТЬ
 void	gap_slide_left(gapbuf *buf)
 {
 	if (buf->user_slide)

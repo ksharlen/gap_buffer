@@ -1,5 +1,6 @@
 #include "gap_buf.h"
 
+//?TMP
 void	print_buf_int(char *buf, size_t size_buf)
 {
 	for (size_t i = 0; i < size_buf; ++i)
@@ -7,6 +8,7 @@ void	print_buf_int(char *buf, size_t size_buf)
 	printf("\n");
 }
 
+//?TMP
 void	print_buf_char(char *buf, size_t size_buf)
 {
 	for (size_t i = 0; i < size_buf; ++i)
@@ -14,6 +16,7 @@ void	print_buf_char(char *buf, size_t size_buf)
 	printf("\n");
 }
 
+//?TMP
 void	print_stat_gapbuf(gapbuf *buf)
 {
 	printf("size_buf: %d\n", buf->size_buf);
@@ -50,15 +53,16 @@ void	gap_buf_init(gapbuf *buf, size_t size_buf, size_t size_gap)
 		die_gap("size_buf || size_gap = 0");
 }
 
-//Вызывается только если предыдущий gap_buf закончился
-//Сделать защиту на 0 размер
 void	new_gap(gapbuf *buf, size_t len_new_gap)
 {
-	if (len_new_gap <= (SIZE_BUF - LEN_STR))
-		len_new_gap = (SIZE_BUF - LEN_STR);
-	GAP_START = LEN_STR;
-	GAP_END = GAP_START + len_new_gap;
-	SIZE_GAP_BUF = len_new_gap;
+	if (len_new_gap)
+	{
+		if (len_new_gap <= (SIZE_BUF - LEN_STR))
+			len_new_gap = (SIZE_BUF - LEN_STR);
+		GAP_START = LEN_STR;
+		GAP_END = GAP_START + len_new_gap;
+		SIZE_GAP_BUF = len_new_gap;
+	}
 }
 
 int		find_sym_pos(gapbuf *buf, size_t pos_sym)

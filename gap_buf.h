@@ -11,7 +11,9 @@
 # include <errno.h>
 
 # define DFLT_SIZE_GAP		10
-# define P_UNUSED(var) ((void)var) //!TMP
+# ifndef P_UNUSED
+#  define P_UNUSED(var) ((void)var)
+# endif
 
 # define BUF			buf->buf
 # define GAP_START		buf->gap_start
@@ -75,9 +77,8 @@ void			gap_move_to_slide(gapbuf *buf);
 
 
 //*TMP
-void			gap_write(gapbuf *buf, void *data, size_t len);
-void			print_buf_int(char *buf, size_t size_buf);
 void			print_stat_gapbuf(gapbuf *buf);
+void			print_buf_int(char *buf, size_t size_buf);
 void			print_buf_char(char *buf, size_t size_buf);
 
 #endif
