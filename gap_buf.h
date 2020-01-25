@@ -45,6 +45,8 @@ typedef struct gapbufer
 	int		gap_end;
 }				gapbuf;
 
+//interface read_write_del_gap
+//interface copy_paste_move_gap
 /*
 **INTERFACE
 */
