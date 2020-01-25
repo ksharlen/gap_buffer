@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 22:26:04 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/25 20:17:56 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/25 20:23:42 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,13 @@ void	gap_put_end_str(gapbuf *buf, char sym)
 		USER_SLIDE++;
 		LEN_STR++;
 	}
-	//else
-	//OVF_BUF
-	//найти конец
-	//Переместить в конец slide
-	//Вставить символ
-	//Передвинуть slide
-	//увеличить размер
+	else
+		die_gap("gapbuf: overflow buf");
 }
 
+//?Потестить
 char	*gap_get_buf(gapbuf *buf)
 {
-
 	char	*str;
 	size_t	i;
 	size_t	j;

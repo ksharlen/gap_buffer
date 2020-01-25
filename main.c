@@ -20,7 +20,7 @@ int			main(void)
 	gap_put_char_in_buf(&buf, 'l');
 	gap_put_char_in_buf(&buf, 'd');
 
-	buf.slide = 3;
+	buf.user_slide = 3;
 	gap_put_char_in_buf(&buf, ' ');
 	gap_put_char_in_buf(&buf, 'h');
 	gap_put_char_in_buf(&buf, 'o');
