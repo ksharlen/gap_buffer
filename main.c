@@ -6,6 +6,13 @@
 
 #define TEST
 
+enum	key
+{
+	LEFT_ARROW = 1000,
+	RIGHT_ARROW,
+	DEL_KEY
+};
+
 void	ftsh_entry_not_canon(struct termios *st_copy)
 {
 	struct termios	chg_mode;
@@ -14,7 +21,7 @@ void	ftsh_entry_not_canon(struct termios *st_copy)
 	{
 		tcgetattr(STDIN_FILENO, &chg_mode);
 		*st_copy = chg_mode;
-		chg_mode.c_lflag &= ~(ICANON | ECHO | ISIG);
+		chg_mode.c_lflag &= ~(ICANON | ECHO);
 		tcsetattr(STDIN_FILENO, TCSANOW, &chg_mode);
 	}
 }
@@ -34,23 +41,65 @@ int			getch(void)
 	{
 		nread = read(STDIN_FILENO, &sym, 1);
 		if (sym == '[')
-			return (1);
+		{
+			nread = read(STDIN_FILENO, &sym, 1);
+			if (sym == 'C')//RIGHT
+				return (RIGHT_ARROW);
+			else if (sym == 'D')//LEFT
+				return (LEFT_ARROW);
+			else if (sym >= '0' && sym <= '9')
+			{
+				char	digit = sym;
+
+				nread = read(STDIN_FILENO, &sym, 1);
+				if (sym == '~')
+				{
+					if (digit == '3')
+						return (DEL_KEY);
+				}
+			}
+		}
 	}
-	//TODO return (sym);
-	return (0);
+	return (sym);
 }
 
+void	init_cursor(void)
+{
+	write(STDOUT_FILENO, "\e[2J", 4);
+	write(STDOUT_FILENO, "\e[H", 3);
+}
 
+void		input(gapbuf *buf)
+{
+	int		key;
+	char	*str;
+
+	init_cursor();
+	do
+	{
+		key = getch();
+		if (key == LEFT_ARROW)
+			gap_slide_left(buf);
+		else if (key == RIGHT_ARROW)
+			gap_slide_right(buf);
+		else if (key >= 32 && key <= 126)
+			gap_put_char_in_buf(buf, key);
+		str = gap_get_buf(buf);
+		init_cursor();
+		write(STDOUT_FILENO, str, strlen(str));
+	} while (key != '\n');
+	printf("\n");
+}
 
 int			main(void)
 {
 	struct termios	copy;
 	gapbuf buf;
 
+	gap_buf_init(&buf, 100, 10);
 ftsh_entry_not_canon(&copy);
 
-
-	gap_buf_init(&buf, 40, 10);
+	input(&buf);
 
 ftsh_entry_canon(&copy);
 	print_buf_char(buf.buf, buf.size_buf);
