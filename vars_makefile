@@ -4,7 +4,8 @@ SRC			:=	main.c\
 					gap_put_buf.c\
 					gap_chk.c\
 					gap_interface.c\
-					gap_buffer.c
+					gap_buffer.c\
+					ins_del_interface.c
 
 OBJ			:=	$(SRC:.c=.o)
 HEADERS		:=	gap_buf.h

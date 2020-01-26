@@ -7,9 +7,10 @@ static void		gap_move_left(gapbuf *buf, size_t before_sym)
 	if (LEN_STR)
 	{
 		ind = find_sym_pos(buf, before_sym);
-		if (GAP_END + 1 != ind && before_sym <= LEN_STR)
+//!сделать проверку на ind == -1
+		if (GAP_END + 1 != (size_t)ind && before_sym <= LEN_STR)
 		{
-			while (GAP_START != ind)
+			while (GAP_START != (size_t)ind)
 			{
 				BUF[GAP_END] = BUF[GAP_START - 1];
 				BUF[GAP_START - 1] = '\0';
@@ -27,9 +28,9 @@ static void		gap_move_right(gapbuf *buf, size_t before_sym)
 	if (LEN_STR)
 	{
 		ind = find_sym_pos(buf, before_sym);
-		if (GAP_END + 1 != ind && before_sym <= LEN_STR)
+		if (GAP_END + 1 != (size_t)ind && before_sym <= LEN_STR)
 		{
-			while (GAP_END != ind - 1)
+			while (GAP_END != (size_t)(ind - 1))
 			{
 				BUF[GAP_START] = BUF[GAP_END + 1];
 				BUF[GAP_END + 1] = '\0';
