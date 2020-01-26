@@ -94,5 +94,7 @@ void			gap_move_to_slide(gapbuf *buf);
 void			print_stat_gapbuf(gapbuf *buf);
 void			print_buf_int(char *buf, size_t size_buf);
 void			print_buf_char(char *buf, size_t size_buf);
+void			f_print(char *filename, const char *fmt);
+extern FILE *fp;
 
 #endif

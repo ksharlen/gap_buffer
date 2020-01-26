@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 12:50:47 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/26 22:40:49 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/27 00:32:43 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	put_sym_in_gap_buf(gapbuf *buf, char sym)
 void	gap_put_sym_in_str(gapbuf *buf, char sym)
 {
 	put_sym_in_gap_buf(buf, sym);
-	USER_SLIDE++;
+	USER_SLIDE++;//!Под вопросом
 }
 
 void	gap_put_end_str(gapbuf *buf, char sym)

@@ -6,6 +6,8 @@
 
 #define TEST
 
+FILE *fp;
+
 enum	key
 {
 	LEFT_ARROW = 1000,
@@ -94,7 +96,6 @@ void		input(gapbuf *buf)
 		}
 		else if (key == RIGHT_ARROW)
 		{
-			// write(STDOUT_FILENO, "\e[C", 3);
 			cr.x++;
 			gap_slide_right(buf);
 		}
@@ -118,6 +119,7 @@ int			main(void)
 	gapbuf buf;
 
 	gap_buf_init(&buf, 100, 10);
+	fp = fopen("output", "w");
 ftsh_entry_not_canon(&copy);
 
 	input(&buf);

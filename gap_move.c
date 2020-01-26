@@ -7,6 +7,9 @@ static void		gap_move_left(gapbuf *buf, size_t before_sym)
 	if (LEN_STR)
 	{
 		ind = find_sym_pos(buf, before_sym);
+//!TMP
+		if (ind == -1)
+			die_gap("ind == -1");
 //!сделать проверку на ind == -1
 		if (GAP_END + 1 != (size_t)ind && before_sym <= LEN_STR)
 		{
@@ -54,9 +57,10 @@ void	gap_move(gapbuf *buf, size_t before_sym)
 
 void	gap_move_to_slide(gapbuf *buf)
 {
-	// BUF_SLIDE = USER_SLIDE;
+	int ind;
 
-	if (GAP_END != BUF_SLIDE - 1)
+	ind = find_sym_pos(buf, BUF_SLIDE);
+	if (GAP_END != (size_t)ind - 1)
 	{
 		gap_move(buf, BUF_SLIDE);
 		BUF_SLIDE = GAP_END + 1;
