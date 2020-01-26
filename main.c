@@ -13,6 +13,12 @@ enum	key
 	DEL_KEY
 };
 
+typedef struct	cursor
+{
+	int x;
+	int y;
+}				cursor;
+
 void	ftsh_entry_not_canon(struct termios *st_copy)
 {
 	struct termios	chg_mode;
@@ -73,20 +79,35 @@ void		input(gapbuf *buf)
 {
 	int		key;
 	char	*str;
+	cursor	cr = {1, 0};
+	char	buf_w[32] = {0};
 
 	init_cursor();
 	do
 	{
 		key = getch();
 		if (key == LEFT_ARROW)
+		{
+			// write(STDOUT_FILENO, "\e[D", 3);
+			cr.x--;
 			gap_slide_left(buf);
+		}
 		else if (key == RIGHT_ARROW)
+		{
+			// write(STDOUT_FILENO, "\e[C", 3);
+			cr.x++;
 			gap_slide_right(buf);
+		}
 		else if (key >= 32 && key <= 126)
+		{
+			cr.x++;
 			gap_put_char_in_buf(buf, key);
-		str = gap_get_buf(buf);
-		init_cursor();
-		write(STDOUT_FILENO, str, strlen(str));
+		}
+			str = gap_get_buf(buf);
+			init_cursor();
+			write(STDOUT_FILENO, str, strlen(str));
+			snprintf(buf_w, sizeof(buf_w), "\x1b[%d;%dH", cr.y, cr.x);
+			write(STDOUT_FILENO, buf_w, strlen(buf_w));
 	} while (key != '\n');
 	printf("\n");
 }

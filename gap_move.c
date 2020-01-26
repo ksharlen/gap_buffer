@@ -54,6 +54,8 @@ void	gap_move(gapbuf *buf, size_t before_sym)
 
 void	gap_move_to_slide(gapbuf *buf)
 {
+	// BUF_SLIDE = USER_SLIDE;
+
 	if (GAP_END != BUF_SLIDE - 1)
 	{
 		gap_move(buf, BUF_SLIDE);
