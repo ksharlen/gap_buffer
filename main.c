@@ -1,5 +1,4 @@
 #include "gap_buf.h"
-#include <termio.h>
 #include <termios.h>
 #include <unistd.h>
 #include <term.h>

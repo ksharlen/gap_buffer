@@ -6,29 +6,30 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 12:50:47 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/27 00:45:05 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/27 16:42:30 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gap_buf.h"
 
-//!Используется для вставки перед курсором
 void	put_sym_in_gap_buf(gapbuf *buf, char sym)
 {
-	//!Нужна проверка на остаток места в буфере
-	if (!SIZE_GAP_BUF)
-		new_gap(buf, DFLT_SIZE_GAP);
-	gap_move_to_slide(buf);
-	BUF[GAP_START++] = sym;
-	LEN_STR++;
-	if (SIZE_GAP_BUF)
-		SIZE_GAP_BUF--;//!Тут опасно
+	if ((LEN_STR + SIZE_GAP_BUF) < SIZE_BUF)
+	{
+		gap_move_to_slide(buf);
+		BUF[GAP_START++] = sym;
+		LEN_STR++;
+		if (SIZE_GAP_BUF)
+			SIZE_GAP_BUF--;
+		if (!SIZE_GAP_BUF)
+			new_gap(buf, DFLT_SIZE_GAP);
+	}
 }
 
 void	gap_put_sym_in_str(gapbuf *buf, char sym)
 {
 	put_sym_in_gap_buf(buf, sym);
-	USER_SLIDE++;//!Под вопросом
+	USER_SLIDE++;
 }
 
 void	gap_put_end_str(gapbuf *buf, char sym)
