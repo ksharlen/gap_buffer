@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 22:26:04 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/27 22:41:27 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/27 22:59:54 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ char	*gap_get_buf(gapbuf *buf)
 		// printf("here\n");
 		// exit(EXIT_FAILURE);
 		// memcpy(str, BUF, LEN_STR);
-		fill_str_skip_gap(buf, str);
+		// fill_str_skip_gap(buf, str);
+		memcpy(str, BUF, LEN_STR);
 	}
 	else
 	{

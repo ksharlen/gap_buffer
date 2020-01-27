@@ -81,15 +81,30 @@ void	init_cursor(void)
 	write(STDOUT_FILENO, "\e[H", 3);
 }
 
-void	print_stat(gapbuf *buf)
+void	print_buf(gapbuf *buf)
+{
+	size_t	i;
+
+	i = 0;
+	write(STDOUT_FILENO, "\e[12;0H", 7);
+	write(STDOUT_FILENO, "\e[2K", 4);
+	while (i < SIZE_BUF)
+	{
+		write(STDOUT_FILENO, &BUF[i], sizeof(char));
+		++i;
+	}
+}
+
+void	print_stat(gapbuf *buf, const char *str)
 {
 	char	buf_w[200] = {0};
 
-	snprintf(buf_w, sizeof(buf_w), "LEN_STR: %zd	BUF_SLIDE: %zd	USER_SLIDE: %zd	SIZE_GAP_BUF: %zd	GAP_START: %zd	GAP_END: %zd",
-								LEN_STR, BUF_SLIDE, USER_SLIDE, SIZE_GAP_BUF, GAP_START, GAP_END);
+	snprintf(buf_w, sizeof(buf_w), "LEN_STR: %zd	BUF_SLIDE: %zd	USER_SLIDE: %zd	SIZE_GAP_BUF: %zd	GAP_START: %zd	GAP_END: %zd	LEN_OUT: %zd",
+								LEN_STR, BUF_SLIDE, USER_SLIDE, SIZE_GAP_BUF, GAP_START, GAP_END, strlen(str));
 	write(STDOUT_FILENO, "\e[10;0H", 7);
 	write(STDOUT_FILENO, "\e[2K", 4);
 	write(STDOUT_FILENO, buf_w, 200);
+print_buf(buf);
 	// fprintf(fp, "%s", buf_w);
 }
 
@@ -146,7 +161,7 @@ void		input(gapbuf *buf)
 			str = gap_get_buf(buf);
 			init_cursor();
 			write(STDOUT_FILENO, str, LEN_STR);
-print_stat(buf);
+print_stat(buf, str);
 			snprintf(buf_w, sizeof(buf_w), "\x1b[%d;%dH", cr.y, cr.x);
 			write(STDOUT_FILENO, buf_w, strlen(buf_w));
 	} while (key != '\n');
@@ -159,7 +174,7 @@ int			main(void)
 	struct termios	copy;
 	gapbuf buf;
 
-	gap_buf_init(&buf, 100, 10);
+	gap_buf_init(&buf, 200, 10);
 	fp = fopen("output", "w");
 ftsh_entry_not_canon(&copy);
 
