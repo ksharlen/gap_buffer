@@ -81,6 +81,18 @@ void	init_cursor(void)
 	write(STDOUT_FILENO, "\e[H", 3);
 }
 
+void	print_stat(gapbuf *buf)
+{
+	char	buf_w[200] = {0};
+
+	snprintf(buf_w, sizeof(buf_w), "LEN_STR: %zd	BUF_SLIDE: %zd	USER_SLIDE: %zd	SIZE_GAP_BUF: %zd	GAP_START: %zd	GAP_END: %zd",
+								LEN_STR, BUF_SLIDE, USER_SLIDE, SIZE_GAP_BUF, GAP_START, GAP_END);
+	write(STDOUT_FILENO, "\e[10;0H", 7);
+	write(STDOUT_FILENO, "\e[2K", 4);
+	write(STDOUT_FILENO, buf_w, 200);
+	// fprintf(fp, "%s", buf_w);
+}
+
 void		input(gapbuf *buf)
 {
 	int		key;
@@ -133,7 +145,8 @@ void		input(gapbuf *buf)
 		}
 			str = gap_get_buf(buf);
 			init_cursor();
-			write(STDOUT_FILENO, str, strlen(str));
+			write(STDOUT_FILENO, str, LEN_STR);
+print_stat(buf);
 			snprintf(buf_w, sizeof(buf_w), "\x1b[%d;%dH", cr.y, cr.x);
 			write(STDOUT_FILENO, buf_w, strlen(buf_w));
 	} while (key != '\n');

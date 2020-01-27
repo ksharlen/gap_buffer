@@ -83,20 +83,36 @@ void	del_gap_buf(gapbuf *buf)
 
 void	fill_str_skip_gap(gapbuf *buf, char *str)
 {
+// 	size_t	i;
+// 	int		ind;
+
+// 	ind = find_sym_pos(buf, LEN_STR);
+// // printf("\nind: %zd\n", ind);
+// // exit(EXIT_FAILURE);
+// 	i = 0;
+// 	while (i < (size_t)ind)
+// 	{
+// 		if (BUF[i])
+// 		{
+// 			*str = BUF[i];
+// 			++str;
+// 		}
+// 		++i;
+// 	}
+
+	size_t	size_str = LEN_STR;
 	size_t	i;
-	int		ind;
+	size_t	j;
 
 	i = 0;
-	ind = find_sym_pos(buf, LEN_STR + 1);
-if (ind == -1)
-	die_gap("ind == -1 fill_str");
-	while (i < (size_t)ind)//!было + 1
+	j = 0;
+	while (i < size_str)
 	{
-		if (BUF[i])
+		if (BUF[j])
 		{
-			*str = BUF[i];
-			++str;
+			str[i] = BUF[j];
+			++i;
 		}
-		++i;
+		++j;
 	}
 }

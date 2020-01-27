@@ -6,12 +6,13 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 12:50:47 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/27 21:47:53 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/27 21:56:26 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gap_buf.h"
 
+//!DONE
 void	put_sym_in_gap_buf(gapbuf *buf, char sym)
 {
 	if ((LEN_STR + SIZE_GAP_BUF) < SIZE_BUF)
@@ -22,7 +23,7 @@ void	put_sym_in_gap_buf(gapbuf *buf, char sym)
 		if (SIZE_GAP_BUF)
 			SIZE_GAP_BUF--;
 		if (!SIZE_GAP_BUF)
-			new_gap(buf, DFLT_SIZE_GAP);
+			new_gap(buf, buf->main_size_gap_buf);
 	}
 }
 
@@ -32,6 +33,7 @@ void	gap_put_sym_in_str(gapbuf *buf, char sym)
 	USER_SLIDE++;
 }
 
+//!DONE
 void	gap_put_end_str(gapbuf *buf, char sym)
 {
 	size_t	end;

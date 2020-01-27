@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 22:26:04 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/27 21:25:00 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/27 22:41:27 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,25 @@ char	*gap_get_buf(gapbuf *buf)
 	char	*str;
 
 	str = (char *)malloc(sizeof(char) * (LEN_STR + 1));
-	bzero(str, LEN_STR);
-	if (!GAP_START && SIZE_GAP_BUF)//gap в начале
+	bzero(str, LEN_STR + 1);
+	if (!GAP_START)
 	{
-		memcpy(str, BUF + SIZE_GAP_BUF, LEN_STR);
+		// printf("here\n");
+		// exit(EXIT_FAILURE);
+		memcpy(str, &BUF[GAP_END + 1], LEN_STR);
 	}
 	else if (GAP_START == (LEN_STR + 1))
 	{
-		memcpy(str, BUF, LEN_STR);
+		// printf("here\n");
+		// exit(EXIT_FAILURE);
+		// memcpy(str, BUF, LEN_STR);
+		fill_str_skip_gap(buf, str);
 	}
 	else
 	{
 		fill_str_skip_gap(buf, str);
-		str[LEN_STR] = '\0';
 	}
+	str[LEN_STR] = '\0';
 	return (str);
 }
 

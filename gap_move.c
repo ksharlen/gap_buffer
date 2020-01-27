@@ -1,5 +1,6 @@
 #include "gap_buf.h"
 
+//!DONE
 static void		gap_move_left(gapbuf *buf, size_t before_sym)
 {
 	int		ind;
@@ -8,10 +9,10 @@ static void		gap_move_left(gapbuf *buf, size_t before_sym)
 	{
 		ind = find_sym_pos(buf, before_sym);
 //!TMP
-		if (ind == -1)
-			die_gap("ind == -1");
+		// if (ind == -1)
+			// die_gap("ind == -1");
 //!сделать проверку на ind == -1
-		if ((GAP_END + 1) != (size_t)ind && before_sym <= LEN_STR)
+		if ((GAP_END + 1) != (size_t)ind && before_sym < LEN_STR)
 		{
 			while (GAP_START != (size_t)ind)
 			{
@@ -32,7 +33,7 @@ static void		gap_move_right(gapbuf *buf, size_t before_sym)
 	if (LEN_STR)
 	{
 		ind = find_sym_pos(buf, before_sym);
-		if (GAP_END + 1 != (size_t)ind && before_sym <= LEN_STR)
+		if (GAP_END + 1 != (size_t)ind && before_sym < LEN_STR)
 		{
 			while (GAP_END != (size_t)(ind - 1))
 			{
@@ -45,6 +46,7 @@ static void		gap_move_right(gapbuf *buf, size_t before_sym)
 	}
 }
 
+//!DONE
 void	gap_move(gapbuf *buf, size_t before_sym)
 {
 	int ind;
@@ -59,6 +61,7 @@ void	gap_move(gapbuf *buf, size_t before_sym)
 	}
 }
 
+//!DONE
 void	gap_move_to_slide(gapbuf *buf)
 {
 	int ind;
