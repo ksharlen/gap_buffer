@@ -26,19 +26,19 @@ void	print_stat_gapbuf(gapbuf *buf)
 	printf("gap_end: %zd\n", buf->gap_end);
 	printf("len_string: %zd\n", buf->len_string);
 	printf("user_slide: %zd\n", buf->user_slide);
+	printf("main_size_gap_buf: %zd\n", buf->main_size_gap_buf);
 	// printf("start_string: %d\n", buf->start_string);
 }
 
 void	new_gap(gapbuf *buf, size_t len_new_gap)
 {
-	if (len_new_gap)
-	{
-		if (len_new_gap >= (SIZE_BUF - LEN_STR))
-			len_new_gap = (SIZE_BUF - LEN_STR);
-		GAP_START = LEN_STR + 1;//!Проверить правильно ли сделал что добавил + 1
-		GAP_END = GAP_START + len_new_gap;
-		SIZE_GAP_BUF = len_new_gap;
-	}
+	if (!len_new_gap)
+		len_new_gap = buf->main_size_gap_buf;
+	if (len_new_gap >= (SIZE_BUF - LEN_STR))
+		len_new_gap = (SIZE_BUF - LEN_STR);
+	GAP_START = LEN_STR + 1;//!Проверить правильно ли сделал что добавил + 1
+	GAP_END = GAP_START + len_new_gap;
+	SIZE_GAP_BUF = len_new_gap;
 }
 
 int		find_sym_pos(gapbuf *buf, size_t pos_sym)

@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 22:26:04 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/27 18:24:59 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/27 18:58:40 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	gap_buf_init(gapbuf *buf, size_t size_buf, size_t size_gap)
 		memset(BUF, 0, sizeof(char) * size_buf);
 		SIZE_BUF = size_buf;
 		SIZE_GAP_BUF = size_gap;
+		buf->main_size_gap_buf = size_gap;
 		GAP_START = 0;
 		GAP_END = SIZE_GAP_BUF - 1;
 		BUF_SLIDE = GAP_END + 1;

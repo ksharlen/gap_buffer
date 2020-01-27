@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <term.h>
 
-#define TEST
+// #define PRINT_KEY
 
 FILE *fp;
 
@@ -12,7 +12,10 @@ enum	key
 	LEFT_ARROW = 1000,
 	RIGHT_ARROW,
 	DEL_KEY,
-	BKCSPACE_KEY = 127
+	BKCSPACE_KEY = 127,
+	CTR_U = 21,
+	CTR_P = 16,
+	CTR_Y = 25
 };
 
 typedef struct	cursor
@@ -29,7 +32,7 @@ void	ftsh_entry_not_canon(struct termios *st_copy)
 	{
 		tcgetattr(STDIN_FILENO, &chg_mode);
 		*st_copy = chg_mode;
-		chg_mode.c_lflag &= ~(ICANON | ECHO);
+		chg_mode.c_lflag &= ~(ICANON | ECHO | ISIG);
 		tcsetattr(STDIN_FILENO, TCSANOW, &chg_mode);
 	}
 }
@@ -117,6 +120,17 @@ void		input(gapbuf *buf)
 		{
 			gap_del_on_slide(buf);
 		}
+		else if (key == CTR_U)
+		{
+			gap_cut_str(buf);
+			cr.y = 0;
+			cr.x = 0;
+		}
+		else if (key == CTR_P)
+		{
+			gap_paste(buf, "hello world");
+			cr.x += strlen("hello world");
+		}
 			str = gap_get_buf(buf);
 			init_cursor();
 			write(STDOUT_FILENO, str, strlen(str));
@@ -128,6 +142,7 @@ void		input(gapbuf *buf)
 
 int			main(void)
 {
+#ifndef PRINT_KEY
 	struct termios	copy;
 	gapbuf buf;
 
@@ -140,5 +155,18 @@ ftsh_entry_not_canon(&copy);
 ftsh_entry_canon(&copy);
 	print_buf_char(buf.buf, buf.size_buf);
 	print_stat_gapbuf(&buf);
+#else
+	struct termios	copy;
+	char	key[5] = {0};
+	char	*p_key = key;
+
+	ftsh_entry_not_canon(&copy);
+	read(STDIN_FILENO, &key, 5);
+	ftsh_entry_canon(&copy);
+
+	while (*p_key)
+		printf("%zd	", *p_key++);
+
+#endif
 	return (0);
 }

@@ -35,6 +35,7 @@ enum			e_gap_dir
 typedef struct gapbufer
 {
 	char	*buf;
+	size_t	main_size_gap_buf;
 	size_t	start_string;
 	size_t	size_buf;
 	size_t	len_string;
@@ -45,25 +46,28 @@ typedef struct gapbufer
 	size_t	gap_end;
 }				gapbuf;
 
-//interface read_write_del_gap
-void			gap_put_char_in_buf(gapbuf *buf, char sym);
-void			del_sym(gapbuf *buf, size_t del_pos);
-//?ф-ия вставки строки
-//?ф-ия удаления строки
-
-//interface copy_paste_move_gap
-//TODO: еще не готов
-
 /*
 **INTERFACE
 */
-void			gap_buf_init(gapbuf *buf, size_t size_buf, size_t size_gap);//!add in file interface
+void			gap_buf_init(gapbuf *buf, size_t size_buf, size_t size_gap);
 char			*gap_get_buf(gapbuf *buf);
-//?DEV
 void			gap_slide_left(gapbuf *buf);
 void			gap_slide_right(gapbuf *buf);
-void			gap_del_before_slide(gapbuf *buf);	//!NOT_DONE
-void			gap_del_on_slide(gapbuf *buf);		//!NOT_DONE
+//?DEV
+
+/*
+**INTERFACE_DEL_INS_SYM
+*/
+void			gap_put_char_in_buf(gapbuf *buf, char sym);
+void			gap_del_before_slide(gapbuf *buf);
+void			gap_del_on_slide(gapbuf *buf);
+
+/*
+**INTERFACE_COPY_PASTE_CUT_STRING
+*/
+char			*gap_copy_str(gapbuf *buf); //!DONE
+char			*gap_cut_str(gapbuf *buf);	//!DONE
+void			gap_paste(gapbuf *buf, const char *str);
 
 /*
 **PUT_BUF_INTERNAL
@@ -87,6 +91,7 @@ void			gap_clean(gapbuf *buf);//!TMP
 int				find_sym_pos(gapbuf *buf, size_t pos_sym);
 void			new_gap(gapbuf *buf, size_t len_new_gap);
 void			gap_move_to_slide(gapbuf *buf);
+void			del_sym(gapbuf *buf, size_t del_pos);
 
 
 
