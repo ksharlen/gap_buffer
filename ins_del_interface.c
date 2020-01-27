@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 22:39:53 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/27 16:49:28 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/27 18:23:31 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,16 @@ void	del_sym(gapbuf *buf, size_t del)
 
 void			gap_del_before_slide(gapbuf *buf)
 {
-	// P_UNUSED(buf);
-	// TODO not done
-	if (USER_SLIDE)
+	int ind;
+
+	if (USER_SLIDE == LEN_STR)
+	{
+		ind = find_sym_pos(buf, USER_SLIDE);
+		BUF[ind] = '\0';
+		--USER_SLIDE;
+		--LEN_STR;
+	}
+	else if (USER_SLIDE)
 		del_sym(buf, --USER_SLIDE);
 }
 

@@ -11,7 +11,8 @@ enum	key
 {
 	LEFT_ARROW = 1000,
 	RIGHT_ARROW,
-	DEL_KEY
+	DEL_KEY,
+	BKCSPACE_KEY = 127
 };
 
 typedef struct	cursor
@@ -91,7 +92,8 @@ void		input(gapbuf *buf)
 		if (key == LEFT_ARROW)
 		{
 			// write(STDOUT_FILENO, "\e[D", 3);
-			cr.x--;
+			if (cr.x)
+				cr.x--;
 			gap_slide_left(buf);
 		}
 		else if (key == RIGHT_ARROW)
@@ -104,7 +106,7 @@ void		input(gapbuf *buf)
 			cr.x++;
 			gap_put_char_in_buf(buf, key);
 		}
-		else if (key == DEL_KEY)
+		else if (key == BKCSPACE_KEY)
 		{
 // exit(EXIT_FAILURE);
 			cr.x--;

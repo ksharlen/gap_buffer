@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 22:26:04 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/26 22:47:42 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/27 18:24:59 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	gap_slide_left(gapbuf *buf)
 
 void	gap_slide_right(gapbuf *buf)
 {
-	if (USER_SLIDE < (LEN_STR - 1))
+	if (USER_SLIDE < (LEN_STR))
 		++USER_SLIDE;
 }
 
