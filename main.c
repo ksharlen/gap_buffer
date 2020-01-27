@@ -49,6 +49,7 @@ int			getch(void)
 		nread = read(STDIN_FILENO, &sym, 1);
 		if (sym == '[')
 		{
+// exit(EXIT_FAILURE);
 			nread = read(STDIN_FILENO, &sym, 1);
 			if (sym == 'C')//RIGHT
 				return (RIGHT_ARROW);
@@ -102,6 +103,12 @@ void		input(gapbuf *buf)
 		{
 			cr.x++;
 			gap_put_char_in_buf(buf, key);
+		}
+		else if (key == DEL_KEY)
+		{
+// exit(EXIT_FAILURE);
+			cr.x--;
+			gap_del_before_slide(buf);
 		}
 			str = gap_get_buf(buf);
 			init_cursor();
