@@ -128,8 +128,8 @@ void		input(gapbuf *buf)
 		}
 		else if (key == CTR_P)
 		{
-			gap_paste(buf, "hello world");
-			cr.x += strlen("hello world");
+			gap_paste(buf, "how are you?");
+			cr.x += strlen("how are you?");
 		}
 			str = gap_get_buf(buf);
 			init_cursor();

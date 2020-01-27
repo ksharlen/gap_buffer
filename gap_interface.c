@@ -6,32 +6,54 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 22:26:04 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/27 18:58:40 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/27 21:25:00 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gap_buf.h"
 
 //?Потестить
+// char	*gap_get_buf(gapbuf *buf)
+// {
+// 	char	*str;
+// 	size_t	i;
+// 	size_t	j;
+
+// 	str = NULL;
+// 	i = 0;
+// 	j = 0;
+// //!remake for strnew()
+// 	str = (char *)malloc(sizeof(char) * (buf->len_string + 1));
+// 	bzero(str, buf->len_string + 1);
+// 	while (j < (size_t)LEN_STR)
+// 	{
+// 		if (i == (size_t)GAP_START)
+// 			i = GAP_END;
+// 		else if (BUF[i])
+// 			str[j++] = BUF[i];
+// 		++i;
+// 	}
+// 	return (str);
+// }
+
 char	*gap_get_buf(gapbuf *buf)
 {
 	char	*str;
-	size_t	i;
-	size_t	j;
 
-	str = NULL;
-	i = 0;
-	j = 0;
-//!remake for strnew()
-	str = (char *)malloc(sizeof(char) * (buf->len_string + 1));
-	bzero(str, buf->len_string + 1);
-	while (j < (size_t)LEN_STR)
+	str = (char *)malloc(sizeof(char) * (LEN_STR + 1));
+	bzero(str, LEN_STR);
+	if (!GAP_START && SIZE_GAP_BUF)//gap в начале
 	{
-		if (i == (size_t)GAP_START)
-			i = GAP_END;
-		else if (BUF[i])
-			str[j++] = BUF[i];
-		++i;
+		memcpy(str, BUF + SIZE_GAP_BUF, LEN_STR);
+	}
+	else if (GAP_START == (LEN_STR + 1))
+	{
+		memcpy(str, BUF, LEN_STR);
+	}
+	else
+	{
+		fill_str_skip_gap(buf, str);
+		str[LEN_STR] = '\0';
 	}
 	return (str);
 }

@@ -30,6 +30,8 @@ void	print_stat_gapbuf(gapbuf *buf)
 	// printf("start_string: %d\n", buf->start_string);
 }
 
+//!только если буфер закончился вызывается она
+//!DONE
 void	new_gap(gapbuf *buf, size_t len_new_gap)
 {
 	if (!len_new_gap)
@@ -41,6 +43,7 @@ void	new_gap(gapbuf *buf, size_t len_new_gap)
 	SIZE_GAP_BUF = len_new_gap;
 }
 
+//!DONE
 int		find_sym_pos(gapbuf *buf, size_t pos_sym)
 {
 	size_t	ind;
@@ -58,4 +61,42 @@ int		find_sym_pos(gapbuf *buf, size_t pos_sym)
 		return (ind);
 	}
 	return (-1);
+}
+
+void	del_gap_buf(gapbuf *buf)
+{
+	size_t	i;
+
+	i = 0;
+	if (SIZE_GAP_BUF && GAP_START < GAP_END && GAP_START < LEN_STR)
+	{
+		while (GAP_START != (SIZE_GAP_BUF + LEN_STR + 1))
+		{
+			BUF[GAP_START++] = BUF[++GAP_END];
+			BUF[GAP_END] = '\0';
+		}
+	}
+	GAP_START = 0;
+	GAP_END = 0;
+	SIZE_GAP_BUF = 0;
+}
+
+void	fill_str_skip_gap(gapbuf *buf, char *str)
+{
+	size_t	i;
+	int		ind;
+
+	i = 0;
+	ind = find_sym_pos(buf, LEN_STR + 1);
+if (ind == -1)
+	die_gap("ind == -1 fill_str");
+	while (i < (size_t)ind)//!было + 1
+	{
+		if (BUF[i])
+		{
+			*str = BUF[i];
+			++str;
+		}
+		++i;
+	}
 }

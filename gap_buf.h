@@ -92,7 +92,9 @@ int				find_sym_pos(gapbuf *buf, size_t pos_sym);
 void			new_gap(gapbuf *buf, size_t len_new_gap);
 void			gap_move_to_slide(gapbuf *buf);
 void			del_sym(gapbuf *buf, size_t del_pos);
-
+void			del_gap_buf(gapbuf *buf);
+void			fill_str_skip_gap(gapbuf *buf, char *str);
+// char			*gap_get_buf(gapbuf *buf);
 
 
 //*TMP
