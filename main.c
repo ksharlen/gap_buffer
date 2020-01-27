@@ -109,8 +109,13 @@ void		input(gapbuf *buf)
 		else if (key == BKCSPACE_KEY)
 		{
 // exit(EXIT_FAILURE);
-			cr.x--;
+			if (cr.x)
+				cr.x--;
 			gap_del_before_slide(buf);
+		}
+		else if (key == DEL_KEY)
+		{
+			gap_del_on_slide(buf);
 		}
 			str = gap_get_buf(buf);
 			init_cursor();
