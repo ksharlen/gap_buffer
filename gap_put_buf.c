@@ -6,13 +6,13 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 12:50:47 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/28 17:10:06 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/28 17:16:00 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gap_buf.h"
 
-void	gap_put_sym_in_str(gapbuf *buf, char sym)
+void	gap_put_sym_in_str(t_gapbuf *buf, char sym)
 {
 	gap_move_to_slide(buf);
 	BUF[GAP_START++] = sym;
@@ -24,7 +24,7 @@ void	gap_put_sym_in_str(gapbuf *buf, char sym)
 	GAP_SLIDE++;
 }
 
-void	gap_put_end_str(gapbuf *buf, char sym)
+void	gap_put_end_str(t_gapbuf *buf, char sym)
 {
 	if (GAP_START == (LEN_STR + 1))
 	{

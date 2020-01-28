@@ -2,7 +2,7 @@
 
 static int		test_move_right(void)
 {
-	gapbuf *buf;
+	t_gapbuf *buf;
 	char	*test_str = "hello";
 	char	*p_test = test_str;
 
@@ -21,13 +21,13 @@ static int		test_move_right(void)
 
 int		test_empty_buf(void)
 {
-	gapbuf *buf;
-	gapbuf test;
+	t_gapbuf *buf;
+	t_gapbuf test;
 
 	buf = test_init(20, 10);
 	test = *buf;
 	gap_move(buf, 4);
-	if (memcmp(buf, &test, sizeof(gapbuf)))
+	if (memcmp(buf, &test, sizeof(t_gapbuf)))
 	{
 		PRINT_KO_NOTE("empty_buf", "memcmp != 0");
 		return (KO);
@@ -36,14 +36,14 @@ int		test_empty_buf(void)
 		return (OK);
 }
 
-static int		test_ind_bigger_len_str(gapbuf *buf)
+static int		test_ind_bigger_len_str(t_gapbuf *buf)
 {
 	char	*test_name = "ind > LEN_STRING";
-	gapbuf 	test;
+	t_gapbuf 	test;
 
 	test = *buf;
 	gap_move(&test, test.len_string + 4);
-	if (memcmp(buf, &test, sizeof(gapbuf)))
+	if (memcmp(buf, &test, sizeof(t_gapbuf)))
 	{
 		PRINT_KO_NOTE(test_name, "test_buf != buf");
 		return (KO);
@@ -52,14 +52,14 @@ static int		test_ind_bigger_len_str(gapbuf *buf)
 		return (OK);
 }
 
-static int	test_ind_bigger_size_buf(gapbuf *buf)
+static int	test_ind_bigger_size_buf(t_gapbuf *buf)
 {
-	gapbuf	test;
+	t_gapbuf	test;
 	char	*test_name = "ind > SIZE_BUF";
 
 	test = *buf;
 	gap_move(&test, SIZE_BUF + LEN_STR);
-	if (memcmp(&test, buf, sizeof(gapbuf)))
+	if (memcmp(&test, buf, sizeof(t_gapbuf)))
 	{
 		PRINT_KO_NOTE(test_name, "test_buf != buf")
 		return (KO);
@@ -70,21 +70,21 @@ static int	test_ind_bigger_size_buf(gapbuf *buf)
 
 static int	test_buf_null(void)
 {
-	gapbuf buf;
+	t_gapbuf buf;
 
 	buf.buf = NULL;
 	gap_move(&buf, 3);
 	return (OK);
 }
 
-static int		test_move_beg_gap(gapbuf *buf)
+static int		test_move_beg_gap(t_gapbuf *buf)
 {
-	gapbuf	test = *buf;
+	t_gapbuf	test = *buf;
 	char	*test_name = "move_gap_beg(pos = 1)";
 
 	gap_move(&test, 5);
 	gap_move(&test, 0);
-	if (memcmp(&test, buf, sizeof(gapbuf)))
+	if (memcmp(&test, buf, sizeof(t_gapbuf)))
 	{
 		PRINT_KO_NOTE(test_name, "test_buf != buf");
 		return (KO);
@@ -95,7 +95,7 @@ static int		test_move_beg_gap(gapbuf *buf)
 
 int		test_ind(void)
 {
-	gapbuf *buf;
+	t_gapbuf *buf;
 	char	*test_string = 	"hello world";
 	char	*p_test =		 test_string;
 	int		ok[4];

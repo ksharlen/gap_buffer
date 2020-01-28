@@ -6,13 +6,13 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 22:39:53 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/28 17:10:06 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/28 17:16:00 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gap_buf.h"
 
-void	gap_put_char_in_buf(gapbuf *buf, char sym)
+void	gap_put_char_in_buf(t_gapbuf *buf, char sym)
 {
 	if ((LEN_STR + SIZE_GAP_BUF) < SIZE_BUF)
 	{
@@ -22,10 +22,10 @@ void	gap_put_char_in_buf(gapbuf *buf, char sym)
 			gap_put_sym_in_str(buf, sym);
 	}
 	else
-		die_gap("gapbuf: overflow buf");
+		die_gap("t_gapbuf: overflow buf");
 }
 
-void	del_sym(gapbuf *buf, size_t del)
+void	del_sym(t_gapbuf *buf, size_t del)
 {
 	if (del < SIZE_BUF)
 	{
@@ -37,7 +37,7 @@ void	del_sym(gapbuf *buf, size_t del)
 	}
 }
 
-void			gap_del_before_slide(gapbuf *buf)
+void			gap_del_before_slide(t_gapbuf *buf)
 {
 	if (LEN_STR)
 	{
@@ -52,7 +52,7 @@ void			gap_del_before_slide(gapbuf *buf)
 	}
 }
 
-void			gap_del_on_slide(gapbuf *buf)
+void			gap_del_on_slide(t_gapbuf *buf)
 {
 	if (LEN_STR)
 	{

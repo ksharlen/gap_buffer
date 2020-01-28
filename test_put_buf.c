@@ -2,7 +2,7 @@
 
 static int		test_put_to_buf(void)
 {
-	gapbuf *buf;
+	t_gapbuf *buf;
 
 	buf = test_init(20, 10);
 	gap_put_to_buf(buf, buf->slide, 't');
@@ -15,7 +15,7 @@ static int		test_put_to_buf(void)
 
 static int		test_null(void)
 {
-	gapbuf buf;
+	t_gapbuf buf;
 
 	buf.buf = NULL;
 	gap_put_sym_slide(&buf, 't');

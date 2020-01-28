@@ -6,14 +6,14 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 22:26:04 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/28 17:10:06 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/28 17:16:00 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gap_buf.h"
 
 //!Переделать под libft
-char	*gap_get_buf(gapbuf *buf)
+char	*gap_get_buf(t_gapbuf *buf)
 {
 	char	*str;
 
@@ -29,20 +29,20 @@ char	*gap_get_buf(gapbuf *buf)
 	return (str);
 }
 
-void	gap_slide_left(gapbuf *buf)
+void	gap_slide_left(t_gapbuf *buf)
 {
 	if (GAP_SLIDE)
 		--GAP_SLIDE;
 }
 
-void	gap_slide_right(gapbuf *buf)
+void	gap_slide_right(t_gapbuf *buf)
 {
 	if (GAP_SLIDE < (LEN_STR))
 		++GAP_SLIDE;
 }
 
 //!Переделать под libft
-void	gap_buf_init(gapbuf *buf, size_t size_buf, size_t size_gap)
+void	gap_buf_init(t_gapbuf *buf, size_t size_buf, size_t size_gap)
 {
 	if (BUF)
 		BUF = NULL;

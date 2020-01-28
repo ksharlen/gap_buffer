@@ -2,7 +2,7 @@
 
 static int	test_no_size_gap_buf(void)
 {
-	gapbuf *buf;
+	t_gapbuf *buf;
 
 	buf = test_init(20, 10);
 	SIZE_GAP_BUF = 0;
@@ -32,7 +32,7 @@ static int	test_no_size_gap_buf(void)
 
 static int	test_no_gap_before_slide(void)
 {
-	gapbuf *buf = test_init(20, 10);
+	t_gapbuf *buf = test_init(20, 10);
 
 	if (no_gap_before_slide(buf) != false)
 	{

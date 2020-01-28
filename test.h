@@ -56,7 +56,7 @@ int		test_sym(char cmp1, char cmp2, char *test_name, char *str_error);
 int		test_null_ptr(void *ptr, char *test_name, char *str_error);
 int		test_not_null_ptr(void *ptr, char *test_name, char *str_error);
 int		test_cmp_int(ssize_t one, ssize_t two, char *test_name, char *str_error);
-gapbuf *test_init(size_t len_buf, size_t len_gap);
+t_gapbuf *test_init(size_t len_buf, size_t len_gap);
 
 
 /*

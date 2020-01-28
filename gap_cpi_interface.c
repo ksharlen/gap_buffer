@@ -6,18 +6,18 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 18:49:52 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/28 17:10:06 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/28 17:16:00 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gap_buf.h"
 
-char	*gap_copy_str(gapbuf *buf)
+char	*gap_copy_str(t_gapbuf *buf)
 {
 	return (gap_get_buf(buf));
 }
 
-char	*gap_cut_str(gapbuf *buf)
+char	*gap_cut_str(t_gapbuf *buf)
 {
 	char	*str;
 
@@ -31,7 +31,7 @@ char	*gap_cut_str(gapbuf *buf)
 	return (str);
 }
 
-static void		gap_put_str(gapbuf *buf, const char *str)
+static void		gap_put_str(t_gapbuf *buf, const char *str)
 {
 	size_t	i;
 	size_t	len_str;
@@ -42,7 +42,7 @@ static void		gap_put_str(gapbuf *buf, const char *str)
 		gap_put_char_in_buf(buf, str[i++]);
 }
 
-static void		put_str_in_gap(gapbuf *buf, const char *str)
+static void		put_str_in_gap(t_gapbuf *buf, const char *str)
 {
 	size_t	len_str;
 
@@ -55,7 +55,7 @@ static void		put_str_in_gap(gapbuf *buf, const char *str)
 	gap_put_str(buf, str);
 }
 
-void	gap_paste(gapbuf *buf, const char *str)
+void	gap_paste(t_gapbuf *buf, const char *str)
 {
 	if (str && *str)
 	{

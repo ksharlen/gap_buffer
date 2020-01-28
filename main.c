@@ -81,7 +81,7 @@ void	init_cursor(void)
 	write(STDOUT_FILENO, "\e[H", 3);
 }
 
-void	print_buf(gapbuf *buf)
+void	print_buf(t_gapbuf *buf)
 {
 	size_t	i;
 
@@ -97,7 +97,7 @@ void	print_buf(gapbuf *buf)
 	write(STDOUT_FILENO, "\e[?25h", 6);
 }
 
-void	print_stat(gapbuf *buf, const char *str)
+void	print_stat(t_gapbuf *buf, const char *str)
 {
 	char	buf_w[200] = {0};
 
@@ -110,7 +110,7 @@ print_buf(buf);
 	// fprintf(fp, "%s", buf_w);
 }
 
-void		input(gapbuf *buf)
+void		input(t_gapbuf *buf)
 {
 	int		key;
 	char	*str;
@@ -174,7 +174,7 @@ int			main(void)
 {
 #ifndef PRINT_KEY
 	struct termios	copy;
-	gapbuf buf;
+	t_gapbuf buf;
 
 	gap_buf_init(&buf, 200, 10);
 	fp = fopen("output", "w");
@@ -184,7 +184,7 @@ ftsh_entry_not_canon(&copy);
 
 ftsh_entry_canon(&copy);
 	print_buf_char(buf.buf, buf.size_buf);
-	print_stat_gapbuf(&buf);
+	print_stat_t_gapbuf(&buf);
 #else
 	struct termios	copy;
 	char	key[5] = {0};

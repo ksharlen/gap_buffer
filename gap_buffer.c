@@ -17,7 +17,7 @@ void	print_buf_char(char *buf, size_t size_buf)
 }
 
 //?TMP
-void	print_stat_gapbuf(gapbuf *buf)
+void	print_stat_t_gapbuf(t_gapbuf *buf)
 {
 	printf("size_buf: %zd\n", buf->size_buf);
 	printf("slide: %zd\n", buf->slide);
@@ -30,7 +30,7 @@ void	print_stat_gapbuf(gapbuf *buf)
 	// printf("start_string: %d\n", buf->start_string);
 }
 
-void	new_gap(gapbuf *buf, size_t len_new_gap)
+void	new_gap(t_gapbuf *buf, size_t len_new_gap)
 {
 	if (!len_new_gap)
 		len_new_gap = buf->main_size_gap_buf;
@@ -41,7 +41,7 @@ void	new_gap(gapbuf *buf, size_t len_new_gap)
 	SIZE_GAP_BUF = len_new_gap;
 }
 
-int		find_sym_pos(gapbuf *buf, size_t pos_sym)
+int		find_sym_pos(t_gapbuf *buf, size_t pos_sym)
 {
 	size_t	ind;
 	size_t	sym;
@@ -60,7 +60,7 @@ int		find_sym_pos(gapbuf *buf, size_t pos_sym)
 	return (-1);
 }
 
-void	del_gap_buf(gapbuf *buf)
+void	del_gap_buf(t_gapbuf *buf)
 {
 	if (SIZE_GAP_BUF && GAP_START < LEN_STR)
 	{
@@ -75,7 +75,7 @@ void	del_gap_buf(gapbuf *buf)
 	SIZE_GAP_BUF = 0;
 }
 
-void	fill_str_skip_gap(gapbuf *buf, char *str)
+void	fill_str_skip_gap(t_gapbuf *buf, char *str)
 {
 	size_t	i;
 	size_t	j;
