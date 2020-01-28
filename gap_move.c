@@ -38,9 +38,9 @@ void	gap_move(gapbuf *buf, size_t ind)
 {
 	if (BUF)
 	{
-		if ((size_t)GAP_START < (size_t)ind)
+		if (GAP_START < ind)
 			gap_move_right(buf, ind);
-		else if ((size_t)GAP_START > (size_t)ind)
+		else if (GAP_START > ind)
 			gap_move_left(buf, ind);
 	}
 }
