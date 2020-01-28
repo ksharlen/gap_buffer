@@ -65,9 +65,6 @@ int		find_sym_pos(gapbuf *buf, size_t pos_sym)
 
 void	del_gap_buf(gapbuf *buf)
 {
-	size_t	i;
-
-	i = 0;
 	if (SIZE_GAP_BUF && GAP_START < GAP_END && GAP_START < LEN_STR)
 	{
 		while (GAP_START != (SIZE_GAP_BUF + LEN_STR + 1))

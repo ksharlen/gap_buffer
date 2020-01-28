@@ -86,6 +86,7 @@ void	print_buf(gapbuf *buf)
 	size_t	i;
 
 	i = 0;
+	write(STDOUT_FILENO, "\e[?25l", 6);
 	write(STDOUT_FILENO, "\e[12;0H", 7);
 	write(STDOUT_FILENO, "\e[2K", 4);
 	while (i < SIZE_BUF)
@@ -93,6 +94,7 @@ void	print_buf(gapbuf *buf)
 		write(STDOUT_FILENO, &BUF[i], sizeof(char));
 		++i;
 	}
+	write(STDOUT_FILENO, "\e[?25h", 6);
 }
 
 void	print_stat(gapbuf *buf, const char *str)
