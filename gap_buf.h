@@ -70,7 +70,6 @@ void			gap_paste(gapbuf *buf, const char *str);
 /*
 **PUT_BUF_INTERNAL
 */
-void			put_sym_in_gap_buf(gapbuf *buf, char sym);
 void			gap_put_end_str(gapbuf *buf, char sym);
 void			gap_put_sym_in_str(gapbuf *buf, char sym);
 
@@ -92,5 +91,7 @@ void			print_buf_int(char *buf, size_t size_buf);
 void			print_buf_char(char *buf, size_t size_buf);
 void			f_print(char *filename, const char *fmt);
 extern FILE *fp;
+
+//TODO: сделать заполнение gapbuf когда у нас закончился размер
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 22:39:53 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/28 15:51:00 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/28 16:55:19 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,22 @@ void	gap_put_char_in_buf(gapbuf *buf, char sym)
 {
 	BUF_SLIDE = USER_SLIDE;
 
-	if ((size_t)BUF_SLIDE == LEN_STR)
-		gap_put_end_str(buf, sym);
+	if ((LEN_STR + SIZE_GAP_BUF) < SIZE_BUF)
+	{
+		if (USER_SLIDE == LEN_STR)
+			gap_put_end_str(buf, sym);
+		else
+			gap_put_sym_in_str(buf, sym);
+	}
 	else
-		gap_put_sym_in_str(buf, sym);
+		die_gap("gapbuf: overflow buf");
 }
 
 void	del_sym(gapbuf *buf, size_t del)
 {
 	if (del < SIZE_BUF)
 	{
-		BUF_SLIDE = del;
+		USER_SLIDE = del;
 		gap_move_to_slide(buf);
 		BUF[GAP_END +++ 1] = '\0';
 		LEN_STR--;
