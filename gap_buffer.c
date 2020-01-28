@@ -25,13 +25,11 @@ void	print_stat_gapbuf(gapbuf *buf)
 	printf("gap_start: %zd\n", buf->gap_start);
 	printf("gap_end: %zd\n", buf->gap_end);
 	printf("len_string: %zd\n", buf->len_string);
-	printf("user_slide: %zd\n", buf->user_slide);
+	printf("GAP_SLIDE: %zd\n", buf->slide);
 	printf("main_size_gap_buf: %zd\n", buf->main_size_gap_buf);
 	// printf("start_string: %d\n", buf->start_string);
 }
 
-//!только если буфер закончился вызывается она
-//!DONE
 void	new_gap(gapbuf *buf, size_t len_new_gap)
 {
 	if (!len_new_gap)
@@ -43,7 +41,6 @@ void	new_gap(gapbuf *buf, size_t len_new_gap)
 	SIZE_GAP_BUF = len_new_gap;
 }
 
-//!DONE
 int		find_sym_pos(gapbuf *buf, size_t pos_sym)
 {
 	size_t	ind;
@@ -65,7 +62,7 @@ int		find_sym_pos(gapbuf *buf, size_t pos_sym)
 
 void	del_gap_buf(gapbuf *buf)
 {
-	if (SIZE_GAP_BUF && GAP_START < GAP_END && GAP_START < LEN_STR)
+	if (SIZE_GAP_BUF && GAP_START < LEN_STR)
 	{
 		while (GAP_START != (SIZE_GAP_BUF + LEN_STR + 1))
 		{
@@ -80,13 +77,12 @@ void	del_gap_buf(gapbuf *buf)
 
 void	fill_str_skip_gap(gapbuf *buf, char *str)
 {
-	size_t	size_str = LEN_STR;
 	size_t	i;
 	size_t	j;
 
 	i = 0;
 	j = 0;
-	while (i < size_str)
+	while (i < LEN_STR)
 	{
 		if (BUF[j])
 		{

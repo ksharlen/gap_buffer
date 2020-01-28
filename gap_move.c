@@ -49,9 +49,9 @@ void	gap_move_to_slide(gapbuf *buf)
 {
 	int ind;
 
-	ind = find_sym_pos(buf, USER_SLIDE);
+	ind = find_sym_pos(buf, GAP_SLIDE);
 	if (ind)
-		if (GAP_END != (size_t)ind - 1 && USER_SLIDE < LEN_STR)
+		if (GAP_END != (size_t)ind - 1 && GAP_SLIDE < LEN_STR)
 			gap_move(buf, ind);
 	if (ind == -1)
 		die_gap("gap_move_to_slide: SLIDE > LEN_STR");

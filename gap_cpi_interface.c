@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 18:49:52 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/28 15:30:10 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/28 17:10:06 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ char	*gap_cut_str(gapbuf *buf)
 	SIZE_GAP_BUF = buf->main_size_gap_buf;
 	GAP_START = 0;
 	GAP_END = SIZE_GAP_BUF - 1;
-	BUF_SLIDE = GAP_END + 1;
-	USER_SLIDE = 0;
+	GAP_SLIDE = 0;
 	LEN_STR = 0;
 	return (str);
 }
@@ -60,7 +59,7 @@ void	gap_paste(gapbuf *buf, const char *str)
 {
 	if (str && *str)
 	{
-		if (!LEN_STR || USER_SLIDE == LEN_STR) //В пустой вставляем
+		if (!LEN_STR || GAP_SLIDE == LEN_STR) //В пустой вставляем
 			gap_put_str(buf, str);
 		else
 			put_str_in_gap(buf, str);

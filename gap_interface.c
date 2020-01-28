@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 22:26:04 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/28 15:29:37 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/28 17:10:06 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ char	*gap_get_buf(gapbuf *buf)
 
 void	gap_slide_left(gapbuf *buf)
 {
-	if (USER_SLIDE)
-		--USER_SLIDE;
+	if (GAP_SLIDE)
+		--GAP_SLIDE;
 }
 
 void	gap_slide_right(gapbuf *buf)
 {
-	if (USER_SLIDE < (LEN_STR))
-		++USER_SLIDE;
+	if (GAP_SLIDE < (LEN_STR))
+		++GAP_SLIDE;
 }
 
 //!Переделать под libft
@@ -59,8 +59,7 @@ void	gap_buf_init(gapbuf *buf, size_t size_buf, size_t size_gap)
 		buf->main_size_gap_buf = size_gap;
 		GAP_START = 0;
 		GAP_END = SIZE_GAP_BUF - 1;
-		BUF_SLIDE = GAP_END + 1;
-		USER_SLIDE = 0;
+		GAP_SLIDE = 0;
 		LEN_STR = 0;
 	}
 	else

@@ -101,8 +101,8 @@ void	print_stat(gapbuf *buf, const char *str)
 {
 	char	buf_w[200] = {0};
 
-	snprintf(buf_w, sizeof(buf_w), "LEN_STR: %zd	BUF_SLIDE: %zd	USER_SLIDE: %zd	SIZE_GAP_BUF: %zd	GAP_START: %zd	GAP_END: %zd	LEN_OUT: %zd",
-								LEN_STR, BUF_SLIDE, USER_SLIDE, SIZE_GAP_BUF, GAP_START, GAP_END, strlen(str));
+	snprintf(buf_w, sizeof(buf_w), "LEN_STR: %zd	GAP_SLIDE: %zd	SIZE_GAP_BUF: %zd	GAP_START: %zd	GAP_END: %zd	LEN_OUT: %zd",
+								LEN_STR, GAP_SLIDE, SIZE_GAP_BUF, GAP_START, GAP_END, strlen(str));
 	write(STDOUT_FILENO, "\e[10;0H", 7);
 	write(STDOUT_FILENO, "\e[2K", 4);
 	write(STDOUT_FILENO, buf_w, 200);

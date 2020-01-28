@@ -20,9 +20,8 @@
 # define GAP_END		buf->gap_end
 # define SIZE_BUF		buf->size_buf
 # define SIZE_GAP_BUF	buf->size_gap_buf
-# define BUF_SLIDE		buf->slide //!с включением gap_buf
 # define LEN_STR		buf->len_string
-# define USER_SLIDE		buf->user_slide //!Без включения buf
+# define GAP_SLIDE		buf->slide
 
 enum			e_gap_dir
 {
@@ -38,7 +37,6 @@ typedef struct gapbufer
 	size_t	size_buf;
 	size_t	len_string;
 	size_t	slide;
-	size_t	user_slide;//!tmp
 	size_t	size_gap_buf;
 	size_t 	gap_start;
 	size_t	gap_end;
