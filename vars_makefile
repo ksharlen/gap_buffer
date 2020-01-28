@@ -1,10 +1,22 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    vars_makefile                                      :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/01/28 18:21:13 by ksharlen          #+#    #+#              #
+#    Updated: 2020/01/28 18:21:41 by ksharlen         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 SRC			:=	main.c\
-					gap_move.c\
-					gap_put_buf.c\
 					gap_interface.c\
-					gap_buffer.c\
 					gap_del_interface.c\
 					gap_cpi_interface.c\
+					gap_move_gapbuf.c\
+					gap_puthcar_sym_to_buf.c\
+					gap_common.c\
 					gap_print.c
 
 OBJ			:=	$(SRC:.c=.o)
