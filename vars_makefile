@@ -1,8 +1,6 @@
 SRC			:=	main.c\
-					gap_buf_op.c\
 					gap_move.c\
 					gap_put_buf.c\
-					gap_chk.c\
 					gap_interface.c\
 					gap_buffer.c\
 					ins_del_interface.c\

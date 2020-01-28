@@ -22,7 +22,6 @@
 # define SIZE_GAP_BUF	buf->size_gap_buf
 # define BUF_SLIDE		buf->slide //!с включением gap_buf
 # define LEN_STR		buf->len_string
-# define START_STRING	buf->start_string
 # define USER_SLIDE		buf->user_slide //!Без включения buf
 
 enum			e_gap_dir
@@ -36,7 +35,6 @@ typedef struct gapbufer
 {
 	char	*buf;
 	size_t	main_size_gap_buf;
-	size_t	start_string;
 	size_t	size_buf;
 	size_t	len_string;
 	size_t	slide;
@@ -75,12 +73,6 @@ void			gap_paste(gapbuf *buf, const char *str);
 void			put_sym_in_gap_buf(gapbuf *buf, char sym);
 void			gap_put_end_str(gapbuf *buf, char sym);
 void			gap_put_sym_in_str(gapbuf *buf, char sym);
-
-/*
-**CHK_BUF
-*/
-bool			no_size_gap_buf(gapbuf *buf);		//?
-bool			no_gap_before_slide(gapbuf *buf);	//?
 
 /*
 **INTERNAL

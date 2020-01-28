@@ -38,7 +38,7 @@ void	new_gap(gapbuf *buf, size_t len_new_gap)
 		len_new_gap = buf->main_size_gap_buf;
 	if (len_new_gap >= (SIZE_BUF - LEN_STR))
 		len_new_gap = (SIZE_BUF - LEN_STR);
-	GAP_START = LEN_STR + 1;//!Проверить правильно ли сделал что добавил + 1
+	GAP_START = LEN_STR + 1;
 	GAP_END = GAP_START + len_new_gap - 1;
 	SIZE_GAP_BUF = len_new_gap;
 }
@@ -80,23 +80,6 @@ void	del_gap_buf(gapbuf *buf)
 
 void	fill_str_skip_gap(gapbuf *buf, char *str)
 {
-// 	size_t	i;
-// 	int		ind;
-
-// 	ind = find_sym_pos(buf, LEN_STR);
-// // printf("\nind: %zd\n", ind);
-// // exit(EXIT_FAILURE);
-// 	i = 0;
-// 	while (i < (size_t)ind)
-// 	{
-// 		if (BUF[i])
-// 		{
-// 			*str = BUF[i];
-// 			++str;
-// 		}
-// 		++i;
-// 	}
-
 	size_t	size_str = LEN_STR;
 	size_t	i;
 	size_t	j;
@@ -112,4 +95,10 @@ void	fill_str_skip_gap(gapbuf *buf, char *str)
 		}
 		++j;
 	}
+}
+
+void	die_gap(const char *s)
+{
+	write(STDERR_FILENO, s, strlen(s));
+	exit(EXIT_FAILURE);
 }
