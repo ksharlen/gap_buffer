@@ -79,7 +79,6 @@ void			fill_str_skip_gap(t_gapbuf *buf, char *str);
 void			print_stat_t_gapbuf(t_gapbuf *buf);
 void			print_buf_int(char *buf, size_t size_buf);
 void			print_buf_char(char *buf, size_t size_buf);
-void			f_print(char *filename, const char *fmt);
 extern FILE *fp;
 
 //TODO: сделать заполнение t_gapbuf когда у нас закончился размер
