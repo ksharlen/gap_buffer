@@ -45,24 +45,6 @@ void	del_gap_buf(t_gapbuf *buf)
 	SIZE_GAP_BUF = 0;
 }
 
-void	fill_str_skip_gap(t_gapbuf *buf, char *str)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	j = 0;
-	while (i < LEN_STR)
-	{
-		if (BUF[j])
-		{
-			str[i] = BUF[j];
-			++i;
-		}
-		++j;
-	}
-}
-
 void	die_gap(const char *s)
 {
 	write(STDERR_FILENO, s, strlen(s));

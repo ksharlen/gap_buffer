@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ins_del_interface.c                                :+:      :+:    :+:   */
+/*   gap_del_interface.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 22:39:53 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/28 17:16:00 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/28 17:23:58 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gap_buf.h"
 
-void	gap_put_char_in_buf(t_gapbuf *buf, char sym)
-{
-	if ((LEN_STR + SIZE_GAP_BUF) < SIZE_BUF)
-	{
-		if (GAP_SLIDE == LEN_STR)
-			gap_put_end_str(buf, sym);
-		else
-			gap_put_sym_in_str(buf, sym);
-	}
-	else
-		die_gap("t_gapbuf: overflow buf");
-}
-
-void	del_sym(t_gapbuf *buf, size_t del)
+static void		del_sym(t_gapbuf *buf, size_t del)
 {
 	if (del < SIZE_BUF)
 	{

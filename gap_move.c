@@ -34,7 +34,7 @@ static void		gap_move_right(t_gapbuf *buf, size_t ind)
 	}
 }
 
-void	gap_move(t_gapbuf *buf, size_t ind)
+static void		gap_move(t_gapbuf *buf, size_t ind)
 {
 	if (BUF)
 	{
@@ -45,7 +45,7 @@ void	gap_move(t_gapbuf *buf, size_t ind)
 	}
 }
 
-void	gap_move_to_slide(t_gapbuf *buf)
+void			gap_move_to_slide(t_gapbuf *buf)
 {
 	int ind;
 

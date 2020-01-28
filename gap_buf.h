@@ -36,7 +36,7 @@ typedef struct	s_gapbuf
 }				t_gapbuf;
 
 /*
-**INTERFACE
+**INTERFACE_GENERAL
 */
 void			gap_buf_init(t_gapbuf *buf, size_t size_buf, size_t size_gap);
 char			*gap_get_buf(t_gapbuf *buf);
@@ -58,22 +58,13 @@ char			*gap_cut_str(t_gapbuf *buf);	//!DONE
 void			gap_paste(t_gapbuf *buf, const char *str);
 
 /*
-**PUT_BUF_INTERNAL
-*/
-void			gap_put_end_str(t_gapbuf *buf, char sym);
-void			gap_put_sym_in_str(t_gapbuf *buf, char sym);
-
-/*
 **INTERNAL
 */
 void			die_gap(const char *s);
 int				find_sym_pos(t_gapbuf *buf, size_t pos_sym);
 void			gap_move_to_slide(t_gapbuf *buf);
-void			gap_move(t_gapbuf *buf, size_t before_sym);
-void			del_sym(t_gapbuf *buf, size_t del_pos);
 void			new_gap(t_gapbuf *buf, size_t len_new_gap);
 void			del_gap_buf(t_gapbuf *buf);
-void			fill_str_skip_gap(t_gapbuf *buf, char *str);
 
 //*TMP
 void			print_stat_t_gapbuf(t_gapbuf *buf);

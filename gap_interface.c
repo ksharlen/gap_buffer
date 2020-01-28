@@ -6,14 +6,32 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 22:26:04 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/28 17:16:00 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/28 17:30:51 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gap_buf.h"
 
+static void		fill_str_skip_gap(t_gapbuf *buf, char *str)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	while (i < LEN_STR)
+	{
+		if (BUF[j])
+		{
+			str[i] = BUF[j];
+			++i;
+		}
+		++j;
+	}
+}
+
 //!Переделать под libft
-char	*gap_get_buf(t_gapbuf *buf)
+char			*gap_get_buf(t_gapbuf *buf)
 {
 	char	*str;
 
@@ -29,7 +47,7 @@ char	*gap_get_buf(t_gapbuf *buf)
 	return (str);
 }
 
-void	gap_slide_left(t_gapbuf *buf)
+void			gap_slide_left(t_gapbuf *buf)
 {
 	if (GAP_SLIDE)
 		--GAP_SLIDE;
@@ -42,7 +60,7 @@ void	gap_slide_right(t_gapbuf *buf)
 }
 
 //!Переделать под libft
-void	gap_buf_init(t_gapbuf *buf, size_t size_buf, size_t size_gap)
+void			gap_buf_init(t_gapbuf *buf, size_t size_buf, size_t size_gap)
 {
 	if (BUF)
 		BUF = NULL;

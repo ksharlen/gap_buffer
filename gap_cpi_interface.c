@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 18:49:52 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/28 17:16:00 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/28 17:28:21 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	gap_paste(t_gapbuf *buf, const char *str)
 {
 	if (str && *str)
 	{
-		if (!LEN_STR || GAP_SLIDE == LEN_STR) //В пустой вставляем
+		if (!LEN_STR || GAP_SLIDE == LEN_STR)
 			gap_put_str(buf, str);
 		else
 			put_str_in_gap(buf, str);

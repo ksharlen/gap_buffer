@@ -3,7 +3,7 @@ SRC			:=	main.c\
 					gap_put_buf.c\
 					gap_interface.c\
 					gap_buffer.c\
-					ins_del_interface.c\
+					gap_del_interface.c\
 					gap_cpi_interface.c\
 					gap_print.c
 

@@ -6,13 +6,13 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 12:50:47 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/28 17:16:00 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/28 17:24:56 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gap_buf.h"
 
-void	gap_put_sym_in_str(t_gapbuf *buf, char sym)
+static void		gap_put_sym_in_str(t_gapbuf *buf, char sym)
 {
 	gap_move_to_slide(buf);
 	BUF[GAP_START++] = sym;
@@ -24,7 +24,7 @@ void	gap_put_sym_in_str(t_gapbuf *buf, char sym)
 	GAP_SLIDE++;
 }
 
-void	gap_put_end_str(t_gapbuf *buf, char sym)
+static void		gap_put_end_str(t_gapbuf *buf, char sym)
 {
 	if (GAP_START == (LEN_STR + 1))
 	{
@@ -36,4 +36,17 @@ void	gap_put_end_str(t_gapbuf *buf, char sym)
 		BUF[LEN_STR + SIZE_GAP_BUF] = sym;
 	GAP_SLIDE++;
 	LEN_STR++;
+}
+
+void			gap_put_char_in_buf(t_gapbuf *buf, char sym)
+{
+	if ((LEN_STR + SIZE_GAP_BUF) < SIZE_BUF)
+	{
+		if (GAP_SLIDE == LEN_STR)
+			gap_put_end_str(buf, sym);
+		else
+			gap_put_sym_in_str(buf, sym);
+	}
+	else
+		die_gap("t_gapbuf: overflow buf");
 }
