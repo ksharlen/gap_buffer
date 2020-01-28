@@ -1,6 +1,5 @@
 #include "gap_buf.h"
 
-//!DONE
 static void		gap_move_left(gapbuf *buf, size_t ind)
 {
 	if (LEN_STR)
@@ -18,7 +17,6 @@ static void		gap_move_left(gapbuf *buf, size_t ind)
 	}
 }
 
-//!DONE - работает на ура
 static void		gap_move_right(gapbuf *buf, size_t ind)
 {
 	if (LEN_STR)
@@ -36,7 +34,6 @@ static void		gap_move_right(gapbuf *buf, size_t ind)
 	}
 }
 
-//!DONE
 void	gap_move(gapbuf *buf, size_t ind)
 {
 	if (BUF)
@@ -48,17 +45,14 @@ void	gap_move(gapbuf *buf, size_t ind)
 	}
 }
 
-//!DONE
 void	gap_move_to_slide(gapbuf *buf)
 {
 	int ind;
 
 	ind = find_sym_pos(buf, USER_SLIDE);
-	if (ind > 0)
-	{
-		if (GAP_END != (size_t)ind - 1 && USER_SLIDE < LEN_STR)//!Опасно
+	if (ind)
+		if (GAP_END != (size_t)ind - 1 && USER_SLIDE < LEN_STR)
 			gap_move(buf, ind);
-	}
-	else
-		die_gap("ind == -1");
+	if (ind == -1)
+		die_gap("gap_move_to_slide: SLIDE > LEN_STR");
 }

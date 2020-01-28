@@ -78,16 +78,13 @@ void			gap_put_sym_in_str(gapbuf *buf, char sym);
 **INTERNAL
 */
 void			die_gap(const char *s);
-void			gap_move(gapbuf *buf, size_t before_sym);
-void			gap_clean(gapbuf *buf);//!TMP
 int				find_sym_pos(gapbuf *buf, size_t pos_sym);
-void			new_gap(gapbuf *buf, size_t len_new_gap);
 void			gap_move_to_slide(gapbuf *buf);
+void			gap_move(gapbuf *buf, size_t before_sym);
 void			del_sym(gapbuf *buf, size_t del_pos);
+void			new_gap(gapbuf *buf, size_t len_new_gap);
 void			del_gap_buf(gapbuf *buf);
 void			fill_str_skip_gap(gapbuf *buf, char *str);
-// char			*gap_get_buf(gapbuf *buf);
-
 
 //*TMP
 void			print_stat_gapbuf(gapbuf *buf);
