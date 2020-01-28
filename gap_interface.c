@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 22:26:04 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/28 17:30:51 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/28 17:49:54 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	gap_slide_right(t_gapbuf *buf)
 }
 
 //!Переделать под libft
-void			gap_buf_init(t_gapbuf *buf, size_t size_buf, size_t size_gap)
+void			gap_init(t_gapbuf *buf, size_t size_buf, size_t size_gap)
 {
 	if (BUF)
 		BUF = NULL;
@@ -70,7 +70,7 @@ void			gap_buf_init(t_gapbuf *buf, size_t size_buf, size_t size_gap)
 			size_gap = size_buf / 3;
 		BUF = (char *)malloc(sizeof(char) * size_buf);
 		if (!BUF)
-			die_gap("gap_buf_init: malloc_error");
+			die_gap("gap_init: malloc_error");
 		memset(BUF, 0, sizeof(char) * size_buf);
 		SIZE_BUF = size_buf;
 		SIZE_GAP_BUF = size_gap;

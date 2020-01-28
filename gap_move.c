@@ -45,14 +45,14 @@ static void		gap_move(t_gapbuf *buf, size_t ind)
 	}
 }
 
-void			gap_move_to_slide(t_gapbuf *buf)
+void			gapbuf_move_to_slide(t_gapbuf *buf)
 {
 	int ind;
 
-	ind = find_sym_pos(buf, GAP_SLIDE);
+	ind = get_sym_ind_at_buf(buf, GAP_SLIDE);
 	if (ind)
 		if (GAP_END != (size_t)ind - 1 && GAP_SLIDE < LEN_STR)
 			gap_move(buf, ind);
 	if (ind == -1)
-		die_gap("gap_move_to_slide: SLIDE > LEN_STR");
+		die_gap("gapbuf_move_to_slide: SLIDE > LEN_STR");
 }

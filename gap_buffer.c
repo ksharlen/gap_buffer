@@ -1,17 +1,17 @@
 #include "gap_buf.h"
 
-void	new_gap(t_gapbuf *buf, size_t len_new_gap)
+void	get_new_gapbuf(t_gapbuf *buf, size_t len_get_new_gapbuf)
 {
-	if (!len_new_gap)
-		len_new_gap = buf->main_size_gap_buf;
-	if (len_new_gap >= (SIZE_BUF - LEN_STR))
-		len_new_gap = (SIZE_BUF - LEN_STR);
+	if (!len_get_new_gapbuf)
+		len_get_new_gapbuf = buf->main_size_gap_buf;
+	if (len_get_new_gapbuf >= (SIZE_BUF - LEN_STR))
+		len_get_new_gapbuf = (SIZE_BUF - LEN_STR);
 	GAP_START = LEN_STR + 1;
-	GAP_END = GAP_START + len_new_gap - 1;
-	SIZE_GAP_BUF = len_new_gap;
+	GAP_END = GAP_START + len_get_new_gapbuf - 1;
+	SIZE_GAP_BUF = len_get_new_gapbuf;
 }
 
-int		find_sym_pos(t_gapbuf *buf, size_t pos_sym)
+int		get_sym_ind_at_buf(t_gapbuf *buf, size_t pos_sym)
 {
 	size_t	ind;
 	size_t	sym;
@@ -30,7 +30,7 @@ int		find_sym_pos(t_gapbuf *buf, size_t pos_sym)
 	return (-1);
 }
 
-void	del_gap_buf(t_gapbuf *buf)
+void	delete_gapbuf(t_gapbuf *buf)
 {
 	if (SIZE_GAP_BUF && GAP_START < LEN_STR)
 	{

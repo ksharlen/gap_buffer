@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 18:49:52 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/28 17:28:21 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/28 17:48:19 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void		gap_put_str(t_gapbuf *buf, const char *str)
 	i = 0;
 	len_str = strlen(str);
 	while (i < len_str)
-		gap_put_char_in_buf(buf, str[i++]);
+		gap_putchar_in_buf(buf, str[i++]);
 }
 
 static void		put_str_in_gap(t_gapbuf *buf, const char *str)
@@ -49,13 +49,13 @@ static void		put_str_in_gap(t_gapbuf *buf, const char *str)
 	len_str = strlen(str);
 	if (len_str > SIZE_GAP_BUF)
 	{
-		del_gap_buf(buf);
-		new_gap(buf, len_str);
+		delete_gapbuf(buf);
+		get_new_gapbuf(buf, len_str);
 	}
 	gap_put_str(buf, str);
 }
 
-void	gap_paste(t_gapbuf *buf, const char *str)
+void	gap_paste_str(t_gapbuf *buf, const char *str)
 {
 	if (str && *str)
 	{

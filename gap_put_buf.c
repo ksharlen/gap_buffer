@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 12:50:47 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/28 17:24:56 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/01/28 17:48:19 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static void		gap_put_sym_in_str(t_gapbuf *buf, char sym)
 {
-	gap_move_to_slide(buf);
+	gapbuf_move_to_slide(buf);
 	BUF[GAP_START++] = sym;
 	LEN_STR++;
 	if (SIZE_GAP_BUF)
 		SIZE_GAP_BUF--;
 	if (!SIZE_GAP_BUF)
-		new_gap(buf, buf->main_size_gap_buf);
+		get_new_gapbuf(buf, buf->main_size_gap_buf);
 	GAP_SLIDE++;
 }
 
@@ -38,7 +38,7 @@ static void		gap_put_end_str(t_gapbuf *buf, char sym)
 	LEN_STR++;
 }
 
-void			gap_put_char_in_buf(t_gapbuf *buf, char sym)
+void			gap_putchar_in_buf(t_gapbuf *buf, char sym)
 {
 	if ((LEN_STR + SIZE_GAP_BUF) < SIZE_BUF)
 	{

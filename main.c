@@ -136,18 +136,18 @@ void		input(t_gapbuf *buf)
 		else if (key >= 32 && key <= 126)
 		{
 			cr.x++;
-			gap_put_char_in_buf(buf, key);
+			gap_putchar_in_buf(buf, key);
 		}
 		else if (key == BKCSPACE_KEY)
 		{
 // exit(EXIT_FAILURE);
 			if (cr.x)
 				cr.x--;
-			gap_del_before_slide(buf);
+			gap_del_sym_before_slide(buf);
 		}
 		else if (key == DEL_KEY)
 		{
-			gap_del_on_slide(buf);
+			gap_del_sym_on_slide(buf);
 		}
 		else if (key == CTR_U)
 		{
@@ -157,7 +157,7 @@ void		input(t_gapbuf *buf)
 		}
 		else if (key == CTR_P)
 		{
-			gap_paste(buf, "how are you?");
+			gap_paste_str(buf, "how are you?");
 			cr.x += strlen("how are you?");
 		}
 			str = gap_get_buf(buf);
@@ -176,7 +176,7 @@ int			main(void)
 	struct termios	copy;
 	t_gapbuf buf;
 
-	gap_buf_init(&buf, 200, 10);
+	gap_init(&buf, 200, 10);
 	fp = fopen("output", "w");
 ftsh_entry_not_canon(&copy);
 

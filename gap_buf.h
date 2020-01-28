@@ -38,7 +38,7 @@ typedef struct	s_gapbuf
 /*
 **INTERFACE_GENERAL
 */
-void			gap_buf_init(t_gapbuf *buf, size_t size_buf, size_t size_gap);
+void			gap_init(t_gapbuf *buf, size_t size_buf, size_t size_gap);
 char			*gap_get_buf(t_gapbuf *buf);
 void			gap_slide_left(t_gapbuf *buf);
 void			gap_slide_right(t_gapbuf *buf);
@@ -46,25 +46,25 @@ void			gap_slide_right(t_gapbuf *buf);
 /*
 **INTERFACE_DEL_INS_SYM
 */
-void			gap_put_char_in_buf(t_gapbuf *buf, char sym);
-void			gap_del_before_slide(t_gapbuf *buf);
-void			gap_del_on_slide(t_gapbuf *buf);
+void			gap_putchar_in_buf(t_gapbuf *buf, char sym);
+void			gap_del_sym_before_slide(t_gapbuf *buf);
+void			gap_del_sym_on_slide(t_gapbuf *buf);
 
 /*
 **INTERFACE_COPY_PASTE_CUT_STRING
 */
 char			*gap_copy_str(t_gapbuf *buf);
 char			*gap_cut_str(t_gapbuf *buf);
-void			gap_paste(t_gapbuf *buf, const char *str);
+void			gap_paste_str(t_gapbuf *buf, const char *str);
 
 /*
 **INTERNAL
 */
 void			die_gap(const char *s);
-int				find_sym_pos(t_gapbuf *buf, size_t pos_sym);
-void			gap_move_to_slide(t_gapbuf *buf);
-void			new_gap(t_gapbuf *buf, size_t len_new_gap);
-void			del_gap_buf(t_gapbuf *buf);
+int				get_sym_ind_at_buf(t_gapbuf *buf, size_t pos_sym);
+void			gapbuf_move_to_slide(t_gapbuf *buf);
+void			get_new_gapbuf(t_gapbuf *buf, size_t len_get_new_gapbuf);
+void			delete_gapbuf(t_gapbuf *buf);
 
 //*TMP
 void			print_stat_t_gapbuf(t_gapbuf *buf);
