@@ -53,8 +53,8 @@ void			gap_del_on_slide(t_gapbuf *buf);
 /*
 **INTERFACE_COPY_PASTE_CUT_STRING
 */
-char			*gap_copy_str(t_gapbuf *buf); //!DONE
-char			*gap_cut_str(t_gapbuf *buf);	//!DONE
+char			*gap_copy_str(t_gapbuf *buf);
+char			*gap_cut_str(t_gapbuf *buf);
 void			gap_paste(t_gapbuf *buf, const char *str);
 
 /*
