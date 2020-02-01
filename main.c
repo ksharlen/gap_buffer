@@ -176,7 +176,7 @@ int			main(void)
 	struct termios	copy;
 	t_gapbuf buf;
 
-	gap_init(&buf, 200, 10);
+	gap_init(&buf, 20, 10);
 	fp = fopen("output", "w");
 ftsh_entry_not_canon(&copy);
 
