@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 22:26:04 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/02/01 15:58:38 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/02/01 16:04:14 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ void			gap_init(t_gapbuf *buf, size_t size_buf, size_t size_gap)
 		BUF = NULL;
 	if (size_buf && size_gap)
 	{
-		if (size_gap > size_buf)
-			size_gap = size_buf / 3;
 		BUF = (char *)malloc(sizeof(char) * (size_buf + size_gap));
 		if (!BUF)
 			die_gap("gap_init: malloc_error");
