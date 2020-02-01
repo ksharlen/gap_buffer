@@ -6,7 +6,7 @@
 /*   By: ksharlen <ksharlen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 18:23:37 by ksharlen          #+#    #+#             */
-/*   Updated: 2020/01/28 18:23:38 by ksharlen         ###   ########.fr       */
+/*   Updated: 2020/02/01 15:00:40 by ksharlen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void		gap_move_right(t_gapbuf *buf, size_t ind)
 	}
 }
 
-static void		gap_move(t_gapbuf *buf, size_t ind)
+void			gap_move(t_gapbuf *buf, size_t ind)
 {
 	if (BUF)
 	{
